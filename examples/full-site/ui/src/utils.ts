@@ -68,6 +68,7 @@ export function historyToPoints(history: History | undefined, scale = 1): XYPoin
 
 // A flat horizontal series held at `value` across [xStart, xEnd].
 export function flatLine(xStart: number, xEnd: number, value: number): XYPoint[] {
+  if (Math.round(xStart / 1000) === Math.round(xEnd / 1000)) return [{ x: xEnd, y: value }];
   return [
     { x: xStart, y: value },
     { x: xEnd, y: value },
